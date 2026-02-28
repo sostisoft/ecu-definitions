@@ -1,0 +1,150 @@
+Audi A3 1.9 TDI - EDC15/EDC16 XDF Definition File Research
+============================================================
+Date: 2026-02-28
+
+TARGET ECUs
+-----------
+1. Bosch EDC15V   - ALH (90hp), AHF (90hp)      [non-PD, VP37 injection pump]
+2. Bosch EDC15P+  - ASZ (130hp), ATD (100hp), AXR (101hp)  [PD = Pumpe Duse]
+3. Bosch EDC16    - BKC/BLS/BXE (105hp)          [later PD engines, mk5 platform]
+
+Common VAG ECU part numbers:
+  EDC15V:  038906012A, 038906012M, 038906012BD (ALH)
+  EDC15P+: 038906019xx series (ASZ/ATD/AXR)
+  EDC16:   03G906016xx series (BKC/BLS/BXE - EDC16U1/U31/U34)
+
+
+FINDINGS SUMMARY
+================
+
+STATUS: No freely downloadable, ready-to-use XDF files were found for these
+specific ECUs on GitHub or public download pages. However, a free open-source
+tool (VAGEDCSuite) CAN GENERATE XDF files from your BIN dump.
+
+
+FREE RESOURCES FOUND & DOWNLOADED
+==================================
+
+1. VAGEDCSuite (FREE - Open Source, generates XDF from BIN)
+   Repository: https://github.com/Blackfrosch/VAGEDCSuite
+   License: Freeware with source code
+   What it does:
+     - Opens EDC15P, EDC15P+, EDC15V, EDC15C, EDC15M, EDC16, EDC17 BIN files
+     - Automatically locates maps (driver wish, torque limiter, smoke limiter,
+       boost target, N75, SOI, duration, EGR, etc.)
+     - Has "File > Export XDF" function to generate TunerPro-compatible XDF
+     - Validates and corrects checksums
+     - Built-in hex editor and map viewer
+   How to use:
+     a) Download/build from GitHub (or get .msi from ecu-tool repo below)
+     b) Open your ECU BIN file
+     c) Go to File > Export XDF
+     d) Use the exported XDF in TunerPro RT
+   Supported ECU types: EDC15P, EDC15P+, EDC15V, EDC15C, EDC15M, EDC16, EDC17,
+                        MSA6, MSA11, MSA12, MSA15
+   Downloaded files:
+     - VAG_EDC15P_reference.pdf (5.1MB) - Map documentation
+     - EDC15PSuite_manual.pdf (4.6MB) - User manual with XDF export instructions
+
+2. EDCSuiteOnline (FREE - Open Source, web-based)
+   Repository: https://github.com/ayyo42069/edcsuiteonline
+   What it does: Browser-based tool for EDC15P+ ECU files
+   Limitation: Limited mappack database compared to desktop version, no XDF export
+
+3. ecu-tool (FREE - Open Source)
+   Repository: https://github.com/fjvva/ecu-tool
+   What it does: Arduino-based ECU flash read/write tool
+   Contains: VAGEDCSuite.msi installer and VAG EDC15 Maps.pdf
+   Supports: EDC15P/P+, EDC15V, EDC15VM+, EDC16U31/U34
+
+4. Template XDF (Created as part of this research)
+   File: EDC15P_1.9TDI_PD_template.xdf
+   WARNING: Contains PLACEHOLDER addresses (0x0). Must be populated with
+   correct addresses from your specific BIN using VAGEDCSuite.
+   Maps included: Driver Wish, Torque Limiter, Smoke Limiter, Boost Target,
+   N75 Duty Cycle, Boost Limiter, SVBL, SOI, Duration, SOI Limiter,
+   EGR, Idle RPM, MAF Linearization, MAF Temp Correction
+
+
+PAID/RESTRICTED RESOURCES (Not Downloaded)
+==========================================
+
+1. autodtc.net - VAG EDC15 Damos Mappack + XDF
+   URL: https://autodtc.net/ecu/vag-edc15-damos-mappack-xdf/
+   Price: EUR 90 per ECU part number
+   Contents: Original BIN + WinOLS damos + A2L + XDF for TunerPro RT
+   Coverage: 883+ individual EDC15 ECU variants
+   Also has EDC16/EDC17 database (846 files) at similar pricing
+
+2. OldSkullTuning
+   URL: https://oldskulltuning.com/bin-definition-file-xdf-for-diesel-car/
+   Price: EUR 60 per XDF
+   Has: EDC15C6 (Mercedes), EDC16C39 (Fiat/Alfa), MSA11 (older VAG TDI)
+   Does NOT appear to have EDC15P+ or EDC15V specific files listed
+
+3. TunerPro.net Official Bin Defs Page
+   URL: https://www.tunerpro.net/downloadBinDefs.htm
+   Only diesel file: EDC16C39 for Fiat Sedici (free download)
+   No EDC15V, EDC15P+, or EDC16U files available
+
+4. Forum-shared files (registration/post-count required):
+   - ecuconnections.com - EDC15P XDF files reported in member-only sections
+   - ecuedit.com - Mappack thread for 038906012BD (ALH), requires 3+ posts
+   - digital-kaos.co.uk - EDC15P XDF discussed, shared via PM only
+   - mhhauto.com - Various EDC15 files, registration required (403 to scrape)
+   - nefariousmotorsports.com - EDC15 VP37 XDF thread exists (SSL cert expired)
+
+5. tuning-software.com - Damos files for WinOLS (paid)
+
+
+GITHUB REPOS SEARCHED (No XDF files found)
+==========================================
+
+Repos checked that do NOT contain EDC15/EDC16 XDF files:
+  - mgflasher-team/mgflasher-map-packs  (BMW B48/B58/S58 only)
+  - MadScientist789/BMW-XDFs-1          (BMW only)
+  - dmacpro91/BMW-XDFs                   (BMW only)
+  - BoredTruckOwner/LS_Based_Engine_Repository  (GM LS only)
+  - joeFischetti/SimosDefinitions        (Simos18 gasoline only)
+  - Corbanistan/BMW-N54-Tuning-Resources (BMW N54 only)
+  - bahnz/BMW-6HPxx-XDF                  (BMW transmission only)
+  - veigy/XDF-Transfer-Tool              (ME7 transfer tool, no XDFs)
+  - bri3d/a2l2xdf                        (Simos18 A2L converter, untested on EDC)
+  - krook1024/edc15-eoi                  (fuel timing calculator, no XDFs)
+  - syncro16/dmn-edc                     (Bosch VE pump control, no XDFs)
+  - TheFlashBold/tune-editor             (Simos/DQ250, no diesel XDFs)
+  - technickfreak2000/n75-Tuner          (N75 map helper for VAGEDCSuite)
+
+GitHub API search for extension:xdf with EDC15 or EDC16: 0 results
+
+
+RECOMMENDED APPROACH
+====================
+
+For EDC15P+ (ASZ/ATD/AXR) - Best free option:
+  1. Read your ECU BIN file using ecu-tool or similar OBD flasher
+  2. Open BIN in VAGEDCSuite (free, open source)
+  3. VAGEDCSuite will auto-detect map locations
+  4. Use File > Export XDF to generate a TunerPro-compatible XDF
+  5. Open in TunerPro RT (free) for editing
+
+For EDC15V (ALH/AHF) - Best free option:
+  1. Same as above - VAGEDCSuite supports EDC15V variant
+  2. Note: ALH/AHF use VP37 injection pump, different from PD engines
+  3. Map structure differs from EDC15P+ but same tool works
+
+For EDC16 (BKC/BLS/BXE) - More limited free options:
+  1. VAGEDCSuite has EDC16 parser (EDC16FileParser.cs) but it's less mature
+  2. The tool's EDC16 XDF export was noted as "5% complete" in the code
+  3. May need paid damos from autodtc.net (EUR 90) for complete coverage
+  4. Alternative: Use WinOLS with purchased damos/A2L files
+
+Known map addresses for 038906012BD (ALH EDC15V) from ecuedit.com:
+  - EGR 01:           $59820 (16x13) [also at $65820, $71820 in other banks]
+  - Driver Wish:      $5c1b4 (12x8)
+  - Smoke Limiter:    $5c9cc (16x10)
+  - Boost Target:     $5af60 (16x10)
+  - N75 Duty Cycle:   varies (16x13)
+  - Torque Limiter:   varies (3x19)
+  Note: Addresses are for this SPECIFIC part number only. Other ALH ECUs
+  will have different addresses.

@@ -1,0 +1,370 @@
+<?xml version="1.0"?>
+<!--
+  EDC15P+ Template XDF for VAG 1.9 TDI PD engines (ASZ 130hp, ATD 100hp, AXR 101hp)
+
+  WARNING: This is a TEMPLATE only. Map addresses vary per ECU part number and
+  software version. You MUST verify addresses against your specific BIN file
+  using VAGEDCSuite before using this for any tuning.
+
+  This file provides the general map structure and categories for EDC15P+ ECUs.
+  Use VAGEDCSuite (https://github.com/Blackfrosch/VAGEDCSuite) to open your
+  specific BIN file and export a correct XDF with "File > Export XDF".
+
+  ECU Types covered (template only - addresses are placeholders):
+    - Bosch EDC15P+  (0281010xxx / 0281011xxx / 0281012xxx)
+    - Engine codes: ASZ (130hp), ATD (100hp), AXR (101hp)
+    - VAG part numbers: 038906019xx series
+
+  Generated: 2026-02-28
+  Source: Community research from ecuedit.com, TDIClub, VAGEDCSuite docs
+-->
+<XDFFORMAT version="1.60">
+  <XDFHEADER>
+    <flags>0x1</flags>
+    <deftitle>EDC15P+ 1.9 TDI PD - Template (VERIFY ADDRESSES)</deftitle>
+    <description>Template XDF for Bosch EDC15P+ VAG 1.9 TDI PD engines. Map addresses are placeholders - use VAGEDCSuite to generate a proper XDF for your specific BIN.</description>
+    <author>Community Template</author>
+    <BASEOFFSET offset="0" subtract="0" />
+    <DEFAULTS datasizeinbits="16" sigdigits="4" outputtype="1" signed="0" lsbfirst="0" float="0" />
+    <REGION type="0xFFFFFFFF" startaddress="0x0" size="0x80000" regionflags="0x0" name="Binary File" desc="512KB EDC15P+ flash" />
+    <CATEGORY index="0x0" name="Fuel" />
+    <CATEGORY index="0x1" name="Turbo" />
+    <CATEGORY index="0x2" name="Timing" />
+    <CATEGORY index="0x3" name="Limiters" />
+    <CATEGORY index="0x4" name="EGR" />
+    <CATEGORY index="0x5" name="Idle" />
+    <CATEGORY index="0x6" name="Sensors" />
+  </XDFHEADER>
+
+  <!-- ==================== FUEL MAPS ==================== -->
+
+  <!-- Driver Wish (Fahrerwunsch) - 12 columns x 8 rows -->
+  <!-- Axis X: RPM, Axis Y: Throttle position (%) -->
+  <!-- Output: Injection quantity (mg/stroke) -->
+  <XDFTABLE uniqueid="0x0001" flags="0x30">
+    <title>Driver Wish (Fahrerwunsch)</title>
+    <description>Requested fuel injection quantity based on RPM and throttle position. Output in mg/stroke.</description>
+    <CATEGORYMEM index="0" category="0" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedcolcount="12" mmedmajorstridebits="0" />
+      <units>RPM</units>
+      <indexcount>12</indexcount>
+      <outputtype>1</outputtype>
+      <datatype>0</datatype>
+      <unittype>0</unittype>
+      <DATEFROM expression="X*1.000000" />
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="8" mmedmajorstridebits="0" />
+      <units>%</units>
+      <indexcount>8</indexcount>
+      <outputtype>1</outputtype>
+      <datatype>0</datatype>
+      <unittype>0</unittype>
+      <DATEFROM expression="X*1.000000" />
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="8" mmedcolcount="12" />
+      <units>mg/stroke</units>
+      <outputtype>1</outputtype>
+      <MATH equation="X*0.01" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+  <!-- Torque Limiter - 3 columns x 19 rows -->
+  <!-- Constrains engine torque based on RPM and atmospheric pressure -->
+  <XDFTABLE uniqueid="0x0002" flags="0x30">
+    <title>Torque Limiter</title>
+    <description>Limits engine torque based on RPM and atmospheric pressure. Output in mg/stroke.</description>
+    <CATEGORYMEM index="0" category="3" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedcolcount="3" />
+      <units>mbar</units>
+      <indexcount>3</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="19" />
+      <units>RPM</units>
+      <indexcount>19</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="19" mmedcolcount="3" />
+      <units>mg/stroke</units>
+      <MATH equation="X*0.01" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+  <!-- Smoke Limiter - 16 columns x 10 rows -->
+  <!-- Limits injection based on RPM and inlet airflow -->
+  <XDFTABLE uniqueid="0x0003" flags="0x30">
+    <title>Smoke Limiter</title>
+    <description>Limits injected quantity based on RPM and inlet air mass to prevent excessive smoke. Output in mg/stroke.</description>
+    <CATEGORYMEM index="0" category="3" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedcolcount="16" />
+      <units>mg/stroke</units>
+      <indexcount>16</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="10" />
+      <units>RPM</units>
+      <indexcount>10</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="10" mmedcolcount="16" />
+      <units>mg/stroke</units>
+      <MATH equation="X*0.01" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+  <!-- ==================== TURBO MAPS ==================== -->
+
+  <!-- Boost Target Map - 16 columns x 10 rows -->
+  <XDFTABLE uniqueid="0x0010" flags="0x30">
+    <title>Boost Target Map</title>
+    <description>Desired turbo boost pressure at given RPM and injection quantity. Output in mbar.</description>
+    <CATEGORYMEM index="0" category="1" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedcolcount="16" />
+      <units>mg/stroke</units>
+      <indexcount>16</indexcount>
+      <MATH equation="X*0.01" />
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="10" />
+      <units>RPM</units>
+      <indexcount>10</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="10" mmedcolcount="16" />
+      <units>mbar</units>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+  <!-- N75 Duty Cycle Map - 16 columns x 13 rows -->
+  <XDFTABLE uniqueid="0x0011" flags="0x30">
+    <title>N75 Duty Cycle</title>
+    <description>Controls the N75 solenoid (VNT vane position) at given RPM and injection quantity.</description>
+    <CATEGORYMEM index="0" category="1" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedcolcount="16" />
+      <units>mg/stroke</units>
+      <indexcount>16</indexcount>
+      <MATH equation="X*0.01" />
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="13" />
+      <units>RPM</units>
+      <indexcount>13</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="13" mmedcolcount="16" />
+      <units>%</units>
+      <MATH equation="X*0.1" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+  <!-- Boost Limiter Map - 10 columns x 10 rows -->
+  <XDFTABLE uniqueid="0x0012" flags="0x30">
+    <title>Boost Pressure Limiter</title>
+    <description>Maximum allowed boost pressure based on RPM and atmospheric pressure. Output in mbar.</description>
+    <CATEGORYMEM index="0" category="3" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedcolcount="10" />
+      <units>mbar</units>
+      <indexcount>10</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="10" />
+      <units>RPM</units>
+      <indexcount>10</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="10" mmedcolcount="10" />
+      <units>mbar</units>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+  <!-- SVBL Single Value Boost Limiter -->
+  <XDFTABLE uniqueid="0x0013" flags="0x30">
+    <title>SVBL - Absolute Boost Limit</title>
+    <description>Single value absolute maximum boost pressure ceiling. Output in mbar.</description>
+    <CATEGORYMEM index="0" category="3" />
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="1" mmedcolcount="1" />
+      <units>mbar</units>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+  <!-- ==================== TIMING MAPS ==================== -->
+
+  <!-- Start of Injection (SOI) Map 1 - 16 columns x 13 rows -->
+  <XDFTABLE uniqueid="0x0020" flags="0x30">
+    <title>Start of Injection (SOI) Map 1</title>
+    <description>Controls injection timing advance. Multiple SOI maps may exist for different coolant temperatures.</description>
+    <CATEGORYMEM index="0" category="2" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedcolcount="16" />
+      <units>mg/stroke</units>
+      <indexcount>16</indexcount>
+      <MATH equation="X*0.01" />
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="13" />
+      <units>RPM</units>
+      <indexcount>13</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="13" mmedcolcount="16" />
+      <units>deg BTDC</units>
+      <MATH equation="X*0.01" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+  <!-- Duration Map (Injection Duration) -->
+  <XDFTABLE uniqueid="0x0021" flags="0x30">
+    <title>Injection Duration Map 1</title>
+    <description>Determines injection duration (degrees of crankshaft rotation) to achieve the requested fuel quantity. Multiple variants exist for different coolant temperatures.</description>
+    <CATEGORYMEM index="0" category="2" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedcolcount="16" />
+      <units>mg/stroke</units>
+      <indexcount>16</indexcount>
+      <MATH equation="X*0.01" />
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="13" />
+      <units>RPM</units>
+      <indexcount>13</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="13" mmedcolcount="16" />
+      <units>deg</units>
+      <MATH equation="X*0.01" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+  <!-- SOI Limiter by Temperature - 13 columns x 7 rows -->
+  <XDFTABLE uniqueid="0x0022" flags="0x30">
+    <title>SOI Limiter (Temperature)</title>
+    <description>Limits start of injection advance based on coolant temperature.</description>
+    <CATEGORYMEM index="0" category="2" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedcolcount="13" />
+      <units>deg C</units>
+      <indexcount>13</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="7" />
+      <units>RPM</units>
+      <indexcount>7</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="7" mmedcolcount="13" />
+      <units>deg BTDC</units>
+      <MATH equation="X*0.01" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+  <!-- ==================== EGR ==================== -->
+
+  <!-- EGR Map - 16 columns x 13 rows -->
+  <XDFTABLE uniqueid="0x0030" flags="0x30">
+    <title>EGR Map</title>
+    <description>Exhaust Gas Recirculation valve duty cycle map.</description>
+    <CATEGORYMEM index="0" category="4" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedcolcount="16" />
+      <units>mg/stroke</units>
+      <indexcount>16</indexcount>
+      <MATH equation="X*0.01" />
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="13" />
+      <units>RPM</units>
+      <indexcount>13</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="13" mmedcolcount="16" />
+      <units>%</units>
+      <MATH equation="X*0.1" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+  <!-- ==================== IDLE ==================== -->
+
+  <!-- Idle RPM 1 -->
+  <XDFTABLE uniqueid="0x0040" flags="0x30">
+    <title>Idle RPM Target 1</title>
+    <description>Target idle RPM.</description>
+    <CATEGORYMEM index="0" category="5" />
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="1" mmedcolcount="2" />
+      <units>RPM</units>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+  <!-- ==================== SENSORS ==================== -->
+
+  <!-- MAF Linearization - 32 columns x 1 row -->
+  <XDFTABLE uniqueid="0x0050" flags="0x30">
+    <title>MAF Sensor Linearization</title>
+    <description>Linearization curve for the mass airflow sensor.</description>
+    <CATEGORYMEM index="0" category="6" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedcolcount="32" />
+      <units>V</units>
+      <indexcount>32</indexcount>
+      <MATH equation="X*0.001" />
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="1" mmedcolcount="32" />
+      <units>mg/stroke</units>
+      <MATH equation="X*0.01" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+  <!-- MAF Correction by Temperature - 8 columns x 8 rows -->
+  <XDFTABLE uniqueid="0x0051" flags="0x30">
+    <title>MAF Correction by Temperature</title>
+    <description>Correction factor for MAF readings based on intake air temperature.</description>
+    <CATEGORYMEM index="0" category="6" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedcolcount="8" />
+      <units>deg C</units>
+      <indexcount>8</indexcount>
+      <MATH equation="X*1.000000" />
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="8" />
+      <units>mg/stroke</units>
+      <indexcount>8</indexcount>
+      <MATH equation="X*0.01" />
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x0" mmedelementsizebits="16" mmedrowcount="8" mmedcolcount="8" />
+      <units>factor</units>
+      <MATH equation="X*0.001" />
+    </XDFAXIS>
+  </XDFTABLE>
+
+</XDFFORMAT>
