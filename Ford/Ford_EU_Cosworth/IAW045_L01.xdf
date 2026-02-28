@@ -1,0 +1,1095 @@
+XDF
+1.110000
+
+DO NOT HAND EDIT!!!! (Trust me)
+
+%%HEADER%%
+	001000 FileVers         ="180308"
+	001005 DefTitle         ="IAW045-01"
+	001007 DescSize         =0xAB
+	001006 Desc             ="Sierra 3dr Cosworth L1\r\n\r\nIf you find any errors, or can add anything new, please post a topic on the Ford definition forum at http://forum.tunerpro.net/viewforum.php?f=8"
+	001010 Author           =""
+	001030 BinSize          =0x2000
+	001035 BaseOffset       =-57344
+	001200 ADSAssoc         =""
+	001225 ADSCheck         =0x0
+	001300 GenFlags         =0x0
+	001325 ModeFlags        =0x0
+	002000 Category0        ="Fuel"
+	002001 Category1        ="Spark"
+	002002 Category2        ="Sensors"
+	002003 Category3        ="Limits"
+	002004 Category4        ="Miscellaneous"
+	002005 Category5        ="Idle"
+	002006 Category6        ="Hardware"
+	002007 Category7        ="Scalers"
+	002008 Category8        ="Tests"
+	002009 Category9        ="Adaptive Learning"
+	002010 Category10       ="Failure Management"
+	002011 Category11       ="EGR"
+	002012 Category12       ="Purge"
+	002013 Category13       ="Accessories"
+	002014 Category14       ="Economy Mode"
+	002015 Category15       ="Transmission"
+	002016 Category16       ="Cruise Control"
+	002017 Category17       ="Transient Fuel"
+	002018 Category18       ="Boost Control"
+	002019 Category19       ="Unknown"
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x4A05
+	000100 Cat0ID           =0x14
+	020005 Title            ="ACT Something"
+	020011 DescSize         =0x11
+	020010 Desc             ="To be confirmed."
+	020020 Units            ="deg C"
+	020100 Address          =0xFDF7
+	020200 Equation         =X,TH|0|0|0|0|
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x7742
+	000100 Cat0ID           =0x14
+	020005 Title            ="ACT Something #1"
+	020011 DescSize         =0x11
+	020010 Desc             ="To be confirmed."
+	020020 Units            ="deg C"
+	020100 Address          =0xFDF8
+	020200 Equation         =X,TH|0|0|0|0|
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x27B
+	000100 Cat0ID           =0x13
+	020005 Title            ="BCS Dutycycle Minimum"
+	020011 DescSize         =0x1D
+	020010 Desc             ="Conversion to be determined."
+	020020 Units            ="%"
+	020050 SizeInBits       =0x10
+	020100 Address          =0xFDED
+	020200 Equation         =X/255/2.55,TH|0|0|0|0|
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x2E70
+	000100 Cat0ID           =0x3
+	040005 Title            ="ACT Transfer"
+	040011 DescSize         =0x1D
+	040010 Desc             ="Conversion to be determined."
+	040100 Address          =0xFC60
+	040200 ZEq              =X,TH|0|0|0|0|
+	040203 XOutType         =0x4
+	040304 YOutType         =0x4
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x10
+	040320 XUnits           ="A-D counts"
+	040325 YUnits           ="deg C"
+	040330 ZUnits           ="deg C"
+	040350 XLabels          =0,16,32,48,64,80,96,112,128,144,160,176,192,208,224,240
+	040352 XLabelType       =0x4
+	040354 XEq              =X,TH|0|0|0|0|
+	040360 YLabels          =deg C
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x1201
+	000100 Cat0ID           =0x13
+	000101 Cat1ID           =0xFF
+	040005 Title            ="BCS Dutycycle Multiplier vs ACT"
+	040011 DescSize         =0x23
+	040010 Desc             ="Input conversion to be determined."
+	040020 SubType          =0x7
+	040100 Address          =0x0
+	040200 ZEq              =X,TH|0|0|0|0|
+	040203 XOutType         =0x2
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x8
+	040305 Cols             =0x1
+	040320 XUnits           ="deg C"
+	040325 YUnits           ="multiplier"
+	040330 ZUnits           =""
+	040350 XLabels          =
+	040352 XLabelType       =0x4
+	040354 XEq              =X,TH|0|0|0|0|
+	040360 YLabels          =
+	040362 YLabelType       =0x4
+	040364 YEq              =X/255,TH|0|0|0|0|
+	040600 XAddress         =0xFE07
+	040610 XDataSize        =0x1
+	040620 XAddrStep        =-1
+	040650 XOutputDig       =0x1
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040700 YAddress         =0xFE0F
+	040710 YDataSize        =0x1
+	040720 YAddrStep        =-1
+	040750 YOutputDig       =0x3
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x795D
+	000100 Cat0ID           =0x8
+	040005 Title            ="BCS Dutycycle Scaler for MAP"
+	040011 DescSize         =0x4A
+	040010 Desc             ="Provides column scaling for the following table;\r\n\r\n'BCS Dutycycle Table'"
+	040050 SizeInBits       =0x10
+	040100 Address          =0xFE17
+	040200 ZEq              =(X/121.344*14.50377)-14.50377,TH|0|0|0|0|
+	040203 XOutType         =0x4
+	040304 YOutType         =0x4
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x10
+	040320 XUnits           ="psi"
+	040325 YUnits           ="column"
+	040330 ZUnits           ="psi"
+	040350 XLabels          =1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
+	040352 XLabelType       =0x4
+	040354 XEq              =X,TH|0|0|0|0|
+	040360 YLabels          =psi
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x1C78
+	000100 Cat0ID           =0x8
+	040005 Title            ="BCS Dutycycle Scaler for RPM"
+	040011 DescSize         =0x47
+	040010 Desc             ="Provides row scaling for the following table;\r\n\r\n'BCS Dutycycle Table'"
+	040050 SizeInBits       =0x10
+	040100 Address          =0xFE37
+	040200 ZEq              =1875000/X,TH|0|0|0|0|
+	040203 XOutType         =0x4
+	040304 YOutType         =0x4
+	040205 OutType          =0x2
+	040210 DecimalPl        =0x0
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x8
+	040320 XUnits           ="rpm"
+	040325 YUnits           ="row"
+	040330 ZUnits           ="rpm"
+	040350 XLabels          =1,2,3,4,5,6,7,8
+	040352 XLabelType       =0x4
+	040354 XEq              =X,TH|0|0|0|0|
+	040360 YLabels          =rpm
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x5854
+	000100 Cat0ID           =0x13
+	040005 Title            ="BCS Dutycycle Table"
+	040011 DescSize         =0x65
+	040010 Desc             ="Higher values permit more boost.\r\n\r\nTunerPro bug; column labelling address should be FE17 not FE27 !"
+	040100 Address          =0xFE47
+	040200 ZEq              =X/2.55,TH|0|0|0|0|
+	040304 YOutType         =0x2
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x8
+	040305 Cols             =0x10
+	040320 XUnits           ="psi"
+	040325 YUnits           ="rpm"
+	040330 ZUnits           ="%"
+	040350 XLabels          =0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+	040352 XLabelType       =0x1
+	040354 XEq              =(X/121.344*14.50377)-14.50377,TH|0|0|0|0|
+	040360 YLabels          =00,00,00,00,00,00,00,00
+	040362 YLabelType       =0x2
+	040364 YEq              =1875000/X,TH|0|0|0|0|
+	040505 XLabelSource     =0x1
+	040515 YLabelSource     =0x1
+	040600 XAddress         =0xFE27
+	040620 XAddrStep        =-2
+	040650 XOutputDig       =0x1
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040700 YAddress         =0xFE37
+	040720 YAddrStep        =-2
+	040750 YOutputDig       =0x0
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x18D6
+	000100 Cat0ID           =0x1
+	040005 Title            ="Cranking Fuel PW vs ECT"
+	040011 DescSize         =0x4C
+	040010 Desc             ="The cranking injection pulsewidth.\r\n\r\nColumn labelling is yet to be sorted."
+	040100 Address          =0xFD64
+	040200 ZEq              =X*256/250,TH|0|0|0|0|
+	040203 XOutType         =0x2
+	040304 YOutType         =0x4
+	040210 DecimalPl        =0x1
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x10
+	040320 XUnits           ="deg C"
+	040325 YUnits           ="mSecs"
+	040330 ZUnits           ="mSecs"
+	040350 XLabels          =00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	040352 XLabelType       =0x2
+	040354 XEq              =1875000/X,TH|0|0|0|0|
+	040360 YLabels          =mSecs
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040505 XLabelSource     =0x1
+	040600 XAddress         =0xFC70
+	040610 XDataSize        =0x1
+	040620 XAddrStep        =1
+	040650 XOutputDig       =0x1
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x7B2F
+	000100 Cat0ID           =0x1
+	040005 Title            ="Decel Fuel Shut Off Table"
+	040011 DescSize         =0x38
+	040010 Desc             ="Values depend upon ECT.\r\n\r\nConversion to be determined."
+	040100 Address          =0xFC40
+	040200 ZEq              =X,TH|0|0|0|0|
+	040203 XOutType         =0x4
+	040304 YOutType         =0x4
+	040205 OutType          =0x2
+	040210 DecimalPl        =0x1
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x2
+	040305 Cols             =0x8
+	040320 XUnits           ="deg C"
+	040325 YUnits           ="rpm"
+	040330 ZUnits           ="rpm"
+	040350 XLabels          =(null),(null),(null),(null),(null),(null),(null),(null)
+	040352 XLabelType       =0x4
+	040354 XEq              =X,TH|0|0|0|0|
+	040360 YLabels          =cut,restore
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x519E
+	000100 Cat0ID           =0x3
+	040005 Title            ="ECT Transfer"
+	040011 DescSize         =0x1D
+	040010 Desc             ="Conversion to be determined."
+	040100 Address          =0xFC70
+	040200 ZEq              =X,TH|0|0|0|0|
+	040203 XOutType         =0x4
+	040304 YOutType         =0x4
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x10
+	040320 XUnits           ="A-D counts"
+	040325 YUnits           ="deg C"
+	040330 ZUnits           =""
+	040350 XLabels          =0,16,32,48,64,80,96,112,128,144,160,176,192,208,224,240
+	040352 XLabelType       =0x4
+	040354 XEq              =X,TH|0|0|0|0|
+	040360 YLabels          =deg C
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x4A7
+	000100 Cat0ID           =0x13
+	020005 Title            ="BCS Dutycycle Maximum"
+	020011 DescSize         =0x1D
+	020010 Desc             ="Conversion to be determined."
+	020020 Units            ="%"
+	020050 SizeInBits       =0x10
+	020100 Address          =0xFDEF
+	020200 Equation         =X/255/2.55,TH|0|0|0|0|
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x579C
+	000100 Cat0ID           =0x4
+	020005 Title            ="Boost Limit Clear Pressure"
+	020011 DescSize         =0xA4
+	020010 Desc             ="The pressure at which fuel cut is cancelled following the 'Boost Limit Set Pressure' value being exceeded. Must be set lower than 'Boost Limit Set Pressure' value."
+	020020 Units            ="psi"
+	020100 Address          =0xFED0
+	020200 Equation         =(X/121.344*14.50377)-14.50377,TH|0|0|0|0|
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x580F
+	000100 Cat0ID           =0x1
+	040005 Title            ="Fuel Table"
+	040011 DescSize         =0x60
+	040010 Desc             ="Conversion to be confirmed.\r\n\r\nTunerPro bug; column labelling address should be FA90 not FA96 !"
+	040100 Address          =0xFAD0
+	040200 ZEq              =(X/15.625)+1,TH|0|0|0|0|
+	040203 XOutType         =0x2
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0xD
+	040305 Cols             =0x10
+	040320 XUnits           ="rpm"
+	040325 YUnits           ="psi"
+	040330 ZUnits           ="mSecs"
+	040350 XLabels          =00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	040352 XLabelType       =0x2
+	040354 XEq              =1875000/X,TH|C5A|0|0|0|
+	040360 YLabels          =0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+	040362 YLabelType       =0x1
+	040364 YEq              =(X/1380*14.50377)-14.50377,TH|0|0|0|0|
+	040505 XLabelSource     =0x1
+	040515 YLabelSource     =0x1
+	040600 XAddress         =0xFA96
+	040620 XAddrStep        =-2
+	040650 XOutputDig       =0x1
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040700 YAddress         =0xFAB0
+	040720 YAddrStep        =-2
+	040750 YOutputDig       =0x1
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x4519
+	000100 Cat0ID           =0x8
+	040005 Title            ="Fuel Table Scaler for MAP"
+	040011 DescSize         =0x84
+	040010 Desc             ="Provides row scaling for the following tables;\r\n\r\n'Fuel Table'\r\n\r\nAlways set the last three columns to the same value as column 13."
+	040050 SizeInBits       =0x10
+	040100 Address          =0xFAB0
+	040200 ZEq              =(X/1380*14.50377)-14.50377,TH|0|0|0|0|
+	040203 XOutType         =0x4
+	040304 YOutType         =0x4
+	040210 DecimalPl        =0x1
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x10
+	040320 XUnits           ="psi"
+	040325 YUnits           ="row"
+	040330 ZUnits           ="psi"
+	040350 XLabels          =1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
+	040352 XLabelType       =0x4
+	040354 XEq              =X,TH|0|0|0|0|
+	040360 YLabels          =psi
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0xC5A
+	000100 Cat0ID           =0x8
+	040005 Title            ="Fuel Table Scaler for RPM"
+	040011 DescSize         =0x55
+	040010 Desc             ="Provides column scaling for the following tables;\r\n\r\n'Fuel Table'\r\n'Injector Timing'"
+	040050 SizeInBits       =0x10
+	040100 Address          =0xFA90
+	040200 ZEq              =1875000/X,TH|0|0|0|0|
+	040203 XOutType         =0x4
+	040304 YOutType         =0x4
+	040205 OutType          =0x2
+	040210 DecimalPl        =0x1
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x10
+	040320 XUnits           ="rpm"
+	040325 YUnits           ="column"
+	040330 ZUnits           ="rpm"
+	040350 XLabels          =1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
+	040352 XLabelType       =0x4
+	040354 XEq              =X,TH|0|0|0|0|
+	040360 YLabels          =rpm
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x3A70
+	000100 Cat0ID           =0x6
+	040005 Title            ="Idle Table"
+	040011 DescSize         =0x36
+	040010 Desc             ="Input is possibly ECT.\r\n\r\nConversion to be confirmed."
+	040100 Address          =0xFD74
+	040200 ZEq              =X,TH|0|0|0|0|
+	040203 XOutType         =0x4
+	040304 YOutType         =0x4
+	040205 OutType          =0x2
+	040210 DecimalPl        =0x1
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x2
+	040305 Cols             =0x10
+	040320 XUnits           ="deg C"
+	040325 YUnits           ="rpm"
+	040330 ZUnits           ="rpm"
+	040350 XLabels          =(null),(null),(null),(null),(null),(null),(null),(null),(null),(null),(null),(null),(null),(null),(null),(null)
+	040352 XLabelType       =0x4
+	040354 XEq              =X,TH|0|0|0|0|
+	040360 YLabels          =max,min
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x7394
+	000100 Cat0ID           =0x1
+	040005 Title            ="Injector Timing"
+	040011 DescSize         =0xD7
+	040010 Desc             ="The injector opening delay from TDC. Only use values of 0, 90, 180 or 270 degrees.\r\n\r\nTunerPro bug: column labelling is back to front, editor will not accept a step of '-2' in the internal/pure definition section. "
+	040100 Address          =0xFC50
+	040200 ZEq              =(X/32-1)*90,TH|0|0|0|0|
+	040203 XOutType         =0x2
+	040304 YOutType         =0x4
+	040205 OutType          =0x2
+	040210 DecimalPl        =0x1
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x10
+	040320 XUnits           ="rpm"
+	040325 YUnits           ="deg"
+	040330 ZUnits           ="degrees"
+	040350 XLabels          =00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	040352 XLabelType       =0x2
+	040354 XEq              =1875000/X,TH|0|0|0|0|
+	040360 YLabels          =deg
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040505 XLabelSource     =0x1
+	040600 XAddress         =0xFA90
+	040620 XAddrStep        =2
+	040650 XOutputDig       =0x1
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x1417
+	000100 Cat0ID           =0x2
+	040005 Title            ="Post Crank Enrichment Multiplier"
+	040011 DescSize         =0xB3
+	040010 Desc             ="A  multiplier of the injection pulsewidth for the period immediately after exiting crank mode. \r\n\r\nThe first column is not used.\r\n\r\nShould conversion be just X instead of 255-X ?"
+	040100 Address          =0xFBF0
+	040200 ZEq              =X/16,TH|0|0|0|0|
+	040203 XOutType         =0x2
+	040210 DecimalPl        =0x3
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x8
+	040305 Cols             =0x8
+	040320 XUnits           ="revs"
+	040325 YUnits           ="deg C"
+	040330 ZUnits           ="multiplier"
+	040350 XLabels          =00,00,00,00,00,00,00,00
+	040352 XLabelType       =0x2
+	040354 XEq              =255-X,TH|0|0|0|0|
+	040360 YLabels          =0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+	040362 YLabelType       =0x1
+	040364 YEq              =X-71,TH|0|0|0|0|
+	040505 XLabelSource     =0x1
+	040515 YLabelSource     =0x1
+	040600 XAddress         =0xFBE0
+	040620 XAddrStep        =-2
+	040650 XOutputDig       =0x1
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040700 YAddress         =0xFBD0
+	040720 YAddrStep        =-2
+	040750 YOutputDig       =0x1
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x7825
+	000100 Cat0ID           =0x8
+	040005 Title            ="Post Crank Enrichment Scaler for ECT"
+	040011 DescSize         =0x74
+	040010 Desc             ="Provides row scaling for the following table;\r\n\r\n'Post Crank Enrichment Multiplier'\r\n\r\nConversion to be determined."
+	040050 SizeInBits       =0x10
+	040100 Address          =0xFBD0
+	040200 ZEq              =X-71,TH|0|0|0|0|
+	040203 XOutType         =0x4
+	040304 YOutType         =0x4
+	040210 DecimalPl        =0x1
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x8
+	040320 XUnits           ="deg C"
+	040325 YUnits           ="row"
+	040330 ZUnits           ="deg C"
+	040350 XLabels          =1,2,3,4,5,6,7,8
+	040352 XLabelType       =0x4
+	040354 XEq              =X,TH|0|0|0|0|
+	040360 YLabels          =deg C
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x65
+	000100 Cat0ID           =0x8
+	040005 Title            ="Post Crank Enrichment Scaler for Revs"
+	040011 DescSize         =0x94
+	040010 Desc             ="Provides column scaling for the following table;\r\n\r\n'Post Crank Enrichment Multiplier'\r\n\r\nAlways set the last column to the same value as column 7."
+	040050 SizeInBits       =0x10
+	040100 Address          =0xFBE0
+	040200 ZEq              =255-X,TH|0|0|0|0|
+	040203 XOutType         =0x4
+	040304 YOutType         =0x4
+	040205 OutType          =0x2
+	040210 DecimalPl        =0x1
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x8
+	040320 XUnits           ="revs"
+	040325 YUnits           ="column"
+	040330 ZUnits           ="revs"
+	040350 XLabels          =1,2,3,4,5,6,7,8
+	040352 XLabelType       =0x4
+	040354 XEq              =X,TH|0|0|0|0|
+	040360 YLabels          =revs
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x2619
+	000100 Cat0ID           =0x2
+	040005 Title            ="Spark Table"
+	040011 DescSize         =0x42
+	040010 Desc             ="TunerPro bug; column  labelling address should be FC80 not FC90 !"
+	040100 Address          =0xFCB0
+	040200 ZEq              =X/4,TH|0|0|0|0|
+	040203 XOutType         =0x2
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x8
+	040305 Cols             =0x10
+	040320 XUnits           ="rpm"
+	040325 YUnits           ="psi"
+	040330 ZUnits           ="deg adv"
+	040350 XLabels          =00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	040352 XLabelType       =0x2
+	040354 XEq              =1875000/X,TH|0|0|0|0|
+	040360 YLabels          =0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+	040362 YLabelType       =0x1
+	040364 YEq              =(X/1380*14.50377)-14.50377,TH|0|0|0|0|
+	040505 XLabelSource     =0x1
+	040515 YLabelSource     =0x1
+	040600 XAddress         =0xFC90
+	040620 XAddrStep        =-2
+	040650 XOutputDig       =0x1
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040700 YAddress         =0xFCA0
+	040720 YAddrStep        =-2
+	040750 YOutputDig       =0x1
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x379A
+	000100 Cat0ID           =0x8
+	040005 Title            ="Spark Table Scaler for MAP"
+	040011 DescSize         =0x3F
+	040010 Desc             ="Provides row scaling for the following table;\r\n\r\n'Spark Table'"
+	040050 SizeInBits       =0x10
+	040100 Address          =0xFCA0
+	040200 ZEq              =(X/1380*14.50377)-14.50377,TH|0|0|0|0|
+	040203 XOutType         =0x4
+	040304 YOutType         =0x4
+	040210 DecimalPl        =0x1
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x8
+	040320 XUnits           ="psi"
+	040325 YUnits           ="row"
+	040330 ZUnits           ="psi"
+	040350 XLabels          =1,2,3,4,5,6,7,8
+	040352 XLabelType       =0x4
+	040354 XEq              =X,TH|0|0|0|0|
+	040360 YLabels          =psi
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x522
+	000100 Cat0ID           =0x8
+	040005 Title            ="Spark Table Scaler for RPM"
+	040011 DescSize         =0x43
+	040010 Desc             ="Provides column scaling for the following tables;\r\n\r\n'Spark Table'"
+	040050 SizeInBits       =0x10
+	040100 Address          =0xFC80
+	040200 ZEq              =1875000/X,TH|0|0|0|0|
+	040203 XOutType         =0x4
+	040304 YOutType         =0x4
+	040205 OutType          =0x2
+	040210 DecimalPl        =0x0
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x10
+	040320 XUnits           ="rpm"
+	040325 YUnits           ="column"
+	040330 ZUnits           ="rpm"
+	040350 XLabels          =1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
+	040352 XLabelType       =0x4
+	040354 XEq              =X,TH|0|0|0|0|
+	040360 YLabels          =rpm
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x774C
+	000100 Cat0ID           =0x2
+	040005 Title            ="Spark Warm Up Multiplier"
+	040011 DescSize         =0x62
+	040010 Desc             ="A multiplier of the spark advance to compensate for ECT.\r\n\r\nColumn labelling is yet to be sorted."
+	040100 Address          =0xFEDD
+	040200 ZEq              =X/128,TH|0|0|0|0|
+	040203 XOutType         =0x2
+	040304 YOutType         =0x4
+	040210 DecimalPl        =0x3
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x10
+	040320 XUnits           ="deg C"
+	040325 YUnits           ="multiplier"
+	040330 ZUnits           ="multiplier"
+	040350 XLabels          =00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	040352 XLabelType       =0x2
+	040354 XEq              =1875000/X,TH|0|0|0|0|
+	040360 YLabels          =multiplier
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040505 XLabelSource     =0x1
+	040600 XAddress         =0xFC70
+	040610 XDataSize        =0x1
+	040620 XAddrStep        =1
+	040650 XOutputDig       =0x1
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x1064
+	000100 Cat0ID           =0x1
+	040005 Title            ="Voltage Correction"
+	040011 DescSize         =0x1C
+	040010 Desc             ="Conversion to be determined"
+	040100 Address          =0xFBA0
+	040200 ZEq              =X/64,TH|0|0|0|0|
+	040203 XOutType         =0x2
+	040304 YOutType         =0x4
+	040210 DecimalPl        =0x3
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x10
+	040320 XUnits           ="volts"
+	040325 YUnits           ="multiplier"
+	040330 ZUnits           ="multiplier"
+	040350 XLabels          =00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	040352 XLabelType       =0x2
+	040354 XEq              =1875000/X,TH|0|0|0|0|
+	040360 YLabels          =multiplier
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040600 XAddress         =0xFC70
+	040610 XDataSize        =0x1
+	040620 XAddrStep        =1
+	040650 XOutputDig       =0x1
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x5D7C
+	000100 Cat0ID           =0x1
+	040005 Title            ="Warm Up Enrichment Multiplier"
+	040011 DescSize         =0x69
+	040010 Desc             ="A multiplier of the injection pulsewidth to compensate for ECT.\r\n\r\nColumn labelling is yet to be sorted."
+	040100 Address          =0xFBB0
+	040200 ZEq              =X/64,TH|0|0|0|0|
+	040203 XOutType         =0x2
+	040304 YOutType         =0x4
+	040210 DecimalPl        =0x3
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x10
+	040320 XUnits           ="deg C"
+	040325 YUnits           ="multiplier"
+	040330 ZUnits           ="multiplier"
+	040350 XLabels          =00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	040352 XLabelType       =0x2
+	040354 XEq              =1875000/X,TH|0|0|0|0|
+	040360 YLabels          =multiplier
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040505 XLabelSource     =0x1
+	040600 XAddress         =0xFC70
+	040610 XDataSize        =0x1
+	040620 XAddrStep        =1
+	040650 XOutputDig       =0x1
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x1ECB
+	000100 Cat0ID           =0x1
+	040005 Title            ="Warm Up Enrichment Multiplier Alternative"
+	040011 DescSize         =0x74
+	040010 Desc             ="A multiplier of the injection pulsewidth to compensate for ECT used when ?\r\n\r\nColumn labelling is yet to be sorted."
+	040100 Address          =0xFBC0
+	040200 ZEq              =X/64,TH|0|0|0|0|
+	040203 XOutType         =0x2
+	040304 YOutType         =0x4
+	040210 DecimalPl        =0x3
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x10
+	040320 XUnits           ="deg C"
+	040325 YUnits           ="multiplier"
+	040330 ZUnits           ="multiplier"
+	040350 XLabels          =00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	040352 XLabelType       =0x2
+	040354 XEq              =1875000/X,TH|0|0|0|0|
+	040360 YLabels          =multiplier
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040505 XLabelSource     =0x1
+	040600 XAddress         =0xFC70
+	040610 XDataSize        =0x1
+	040620 XAddrStep        =1
+	040650 XOutputDig       =0x1
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%TABLE%%
+	000002 UniqueID         =0x6612
+	000100 Cat0ID           =0x1
+	040005 Title            ="WOT Fuel Multiplier"
+	040011 DescSize         =0xA3
+	040010 Desc             ="A multiplier of the injection pulsewidth to compensate for WOT.\r\n\r\nConversion to be confirmed.\r\n\r\nTunerPro bug: column labelling address should be FAB0 not FAAE !"
+	040100 Address          =0xFC30
+	040200 ZEq              =X/128,TH|0|0|0|0|
+	040203 XOutType         =0x2
+	040304 YOutType         =0x4
+	040210 DecimalPl        =0x3
+	040230 RangeLow         =0.0000
+	040240 RangeHigh        =255.0000
+	040300 Rows             =0x1
+	040305 Cols             =0x10
+	040320 XUnits           ="rpm"
+	040325 YUnits           ="multiplier"
+	040330 ZUnits           ="multiplier"
+	040350 XLabels          =00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+	040352 XLabelType       =0x2
+	040354 XEq              =1875000/X,TH|0|0|0|0|
+	040360 YLabels          =multiplier
+	040362 YLabelType       =0x4
+	040364 YEq              =X,TH|0|0|0|0|
+	040505 XLabelSource     =0x1
+	040600 XAddress         =0xFAAE
+	040620 XAddrStep        =-2
+	040650 XOutputDig       =0x1
+	040660 XAxisMin         =1000.000000
+	040670 XAxisMax         =1000.000000
+	040760 YAxisMin         =1000.000000
+	040770 YAxisMax         =1000.000000
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x6F7D
+	000100 Cat0ID           =0x4
+	020005 Title            ="Boost Limit Set Pressure"
+	020011 DescSize         =0x63
+	020010 Desc             ="The pressure at which all fuel is cut. Must be set higher than 'Boost Limit Clear Pressure' value."
+	020020 Units            ="psi"
+	020100 Address          =0xFECF
+	020200 Equation         =(X/121.344*14.50377)-14.50377,TH|0|0|0|0|
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x6A24
+	000100 Cat0ID           =0x13
+	020005 Title            ="Boost Reduction Related"
+	020011 DescSize         =0x1
+	020010 Desc             =""
+	020020 Units            ="unknown"
+	020050 SizeInBits       =0x10
+	020100 Address          =0xFDF3
+	020200 Equation         =X,TH|0|0|0|0|
+	020205 OutType          =0x2
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x3043
+	000100 Cat0ID           =0x13
+	020005 Title            ="Boost Reduction RPM"
+	020011 DescSize         =0x23
+	020010 Desc             ="The rpm at which boost is reduced."
+	020020 Units            ="rpm"
+	020050 SizeInBits       =0x10
+	020100 Address          =0xFDF1
+	020200 Equation         =1875000/X,TH|0|0|0|0|
+	020205 OutType          =0x2
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x46DA
+	000100 Cat0ID           =0x14
+	020005 Title            ="ECT Something"
+	020011 DescSize         =0x11
+	020010 Desc             ="To be confirmed."
+	020020 Units            ="deg C"
+	020100 Address          =0xFED5
+	020200 Equation         =X,TH|0|0|0|0|
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x41E5
+	000100 Cat0ID           =0x5
+	020005 Title            ="Fuel Table Scaler for MAP Width"
+	020011 DescSize         =0x95
+	020010 Desc             ="Defines the number of entries (and subsequently the number of rows in the related table) used in the following table;\r\n\r\n'Fuel Table Scaler for MAP'"
+	020020 Units            ="no."
+	020100 Address          =0xFD5B
+	020200 Equation         =X+1,TH|0|0|0|0|
+	020205 OutType          =0x2
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x2FA1
+	000100 Cat0ID           =0x5
+	020005 Title            ="Fuel Table Scaler for RPM Width"
+	020011 DescSize         =0x98
+	020010 Desc             ="Defines the number of entries (and subsequently the number of columns in the related table) used in the following table;\r\n\r\n'Fuel Table Scaler for RPM'"
+	020020 Units            ="no."
+	020100 Address          =0xFD5A
+	020200 Equation         =X+1,TH|0|0|0|0|
+	020205 OutType          =0x2
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x3B19
+	000100 Cat0ID           =0x5
+	020005 Title            ="Post Crank Enrichment Scaler for ECT Width"
+	020011 DescSize         =0xA0
+	020010 Desc             ="Defines the number of entries (and subsequently the number of rows in the related table) used in the following table;\r\n\r\n'Post Crank Enrichment Scaler for ECT'"
+	020020 Units            ="no."
+	020100 Address          =0xFD63
+	020200 Equation         =X+1,TH|0|0|0|0|
+	020205 OutType          =0x2
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x3397
+	000100 Cat0ID           =0x5
+	020005 Title            ="Post Crank Enrichment Scaler for Revs Width"
+	020011 DescSize         =0xA4
+	020010 Desc             ="Defines the number of entries (and subsequently the number of columns in the related table) used in the following table;\r\n\r\n'Post Crank Enrichment Scaler for Revs'"
+	020020 Units            ="no."
+	020100 Address          =0xFD62
+	020200 Equation         =X+1,TH|0|0|0|0|
+	020205 OutType          =0x2
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0xA2E
+	000100 Cat0ID           =0x14
+	020005 Title            ="MAP Something"
+	020011 DescSize         =0x11
+	020010 Desc             ="To be confirmed."
+	020020 Units            ="psi"
+	020100 Address          =0xFDFA
+	020200 Equation         =(X/121.344*14.50377)-14.50377,TH|0|0|0|0|
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x1F9
+	000100 Cat0ID           =0x14
+	020005 Title            ="MAP Word Something"
+	020011 DescSize         =0x11
+	020010 Desc             ="To be confirmed."
+	020020 Units            ="psi"
+	020050 SizeInBits       =0x10
+	020100 Address          =0xFED1
+	020200 Equation         =(X/1941.504*14.50377)-14.50377,TH|0|0|0|0|
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x22CE
+	000100 Cat0ID           =0x4
+	020005 Title            ="Rev Limit Soft Cut"
+	020011 DescSize         =0x46
+	020010 Desc             ="The rpm at which every other injector output is cut (i.e. half fuel)."
+	020020 Units            ="rpm"
+	020050 SizeInBits       =0x10
+	020100 Address          =0xFD44
+	020200 Equation         =1875000/X,TH|0|0|0|0|
+	020205 OutType          =0x2
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x69D3
+	000100 Cat0ID           =0x4
+	020005 Title            ="Rev Limit Hard Cut"
+	020011 DescSize         =0x3C
+	020010 Desc             ="The rpm at which all injector output is cut (i.e. no fuel)."
+	020020 Units            ="rpm"
+	020050 SizeInBits       =0x10
+	020100 Address          =0xFD42
+	020200 Equation         =1875000/X,TH|0|0|0|0|
+	020205 OutType          =0x2
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0xEC8
+	000100 Cat0ID           =0x14
+	020005 Title            ="RPM Something"
+	020011 DescSize         =0x11
+	020010 Desc             ="To be confirmed."
+	020020 Units            ="rpm"
+	020050 SizeInBits       =0x10
+	020100 Address          =0xFED3
+	020200 Equation         =1875000/X,TH|0|0|0|0|
+	020205 OutType          =0x2
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x1FD4
+	000100 Cat0ID           =0x5
+	020005 Title            ="Spark Table Scaler for MAP Width"
+	020011 DescSize         =0x96
+	020010 Desc             ="Defines the number of entries (and subsequently the number of rows in the related table) used in the following table;\r\n\r\n'Spark Table Scaler for MAP'"
+	020020 Units            ="no."
+	020100 Address          =0xFD5C
+	020200 Equation         =X+1,TH|0|0|0|0|
+	020205 OutType          =0x2
+	020210 DecimalPl        =0x1
+%%END%%
+
+%%CONSTANT%%
+	000002 UniqueID         =0x7E40
+	000100 Cat0ID           =0x5
+	020005 Title            ="Spark Table Scaler for RPM Width"
+	020011 DescSize         =0x99
+	020010 Desc             ="Defines the number of entries (and subsequently the number of columns in the related table) used in the following table;\r\n\r\n'Spark Table Scaler for RPM'"
+	020020 Units            ="no."
+	020100 Address          =0xFD59
+	020200 Equation         =X+1,TH|0|0|0|0|
+	020205 OutType          =0x2
+	020210 DecimalPl        =0x1
+%%END%%
+
